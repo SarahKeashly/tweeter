@@ -1,0 +1,18 @@
+
+header {
+  margin-top: 100px;
+  display: flex;
+  background-color: #e69027;
+  background-image: url("https://www.transparenttextures.com/patterns/asfalt-dark.png");
+  height: 400px;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.avatar-image {
+
+  justify-content: center;
+  align-items: center;
+
+}
