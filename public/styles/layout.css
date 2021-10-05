@@ -21,6 +21,17 @@ body {
   font-family: 'Source Sans Pro', sans-serif;
 }
 
+main {
+  background-color: #f4f1ec; 
+  padding-left: 5%;
+  padding-right: 5%;
+}
+
+/* .tweet-text {
+  color: rgb(54, 53, 53);
+  font-weight: bolder;
+} */
+
 
 /*
  * Additional CSS can be defined below or in other CSS files, as per instructions

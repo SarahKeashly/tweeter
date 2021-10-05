@@ -1,0 +1,34 @@
+
+
+
+.new-tweet {
+  color: rgb(54, 53, 53);
+  font-weight: bolder;
+}
+
+
+#tweet-text {
+  background: none;
+  border-bottom: 5px solid grey;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  width: 100%;
+}
+
+.submit-counter {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-family: 'Bungee', cursive;
+}
+
+button {
+  background-color: #4056A1;
+  color: white;
+  border-top: none;
+  border-bottom: none;
+  border-left: none;
+  border-right: none;
+
+}
