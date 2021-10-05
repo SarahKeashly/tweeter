@@ -1,0 +1,58 @@
+/* 120 pixels in height
+Full width of the viewport
+#4056A1 as its default background colour
+#FFFFFF as its default font colour
+<span> within the <nav> uses Bungee as its default font-family
+1.5ems of space on the right and left between the content and the edges */
+
+nav {
+  display: flex;
+  background-color: #4056A1;
+  padding-left: 1.5em;
+  padding-right: 1.5em;
+  height: 120px;
+  justify-content: space-between;
+  align-items: center;
+
+  overflow: hidden;
+  position: fixed; /* Set the navbar to fixed position */
+  top: 0; /* Position the navbar at the top of the page */
+  width: 100%; /* Full width */
+
+}
+
+
+.navbar {
+  font-family: 'Bungee', cursive;
+  color: #FFFFFF;
+  /* display: flex; */
+  /* justify-content: left; */
+  /* align-self: flex-end; */
+  font-size: 40px;
+
+  
+  
+}
+
+/* .tweet-arrow{
+  display: flex,
+  
+  flex-direction: column ,
+  align-items: centre,
+  
+  }  */
+  .tweet-arrow{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+  }
+
+.new-tweet {
+color:#FFFFFF;
+}
+
+
+.arrow {
+  color: red;
+}
