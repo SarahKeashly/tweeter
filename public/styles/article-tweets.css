@@ -1,0 +1,80 @@
+
+
+
+.article-tweet-container {
+  background-color: #f4f1ec; 
+  padding-left: .5%;
+  padding-right: .5%;
+  border: 5px solid grey;
+} 
+
+.article-tweet-container:hover {
+  box-shadow: 5px 10px rgb(153, 152, 152);
+}
+
+.article-tweet-header{
+  margin-top: unset;
+  display: flex;
+  /* align-items: center; */
+  justify-content: space-between;
+  background-color:#f4f1ec; 
+  background-image: none;
+  height: 50px;
+}
+
+.article-name{
+  opacity: 70%;
+}
+
+.newton-avatar {
+  width:40px;  
+}
+
+.article-username{
+  color: #4056A1;
+  opacity: 40%;
+  font-weight: bold;
+}
+
+hr {
+    height: 5px;
+    background-color: grey;
+    padding-right: 5%;
+    padding-left: 5%;
+}
+
+.article-tweet-footer {
+  font-size: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.article-small-images{
+  display:flex;
+  flex-direction: row;
+}
+
+.flag {
+  color: grey;
+}
+
+.flag:hover {
+color:goldenrod;
+}
+
+.retweet {
+  color: grey;
+}
+
+.retweet:hover {
+color:goldenrod;
+}
+
+.heart {
+  color: grey;
+}
+
+.heart:hover {
+color:goldenrod;
+}

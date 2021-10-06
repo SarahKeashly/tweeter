@@ -5,7 +5,7 @@
  */
 
 
-// Test / driver code (temporary). Eventually will get this from the server.
+// Test / driver code(temporary).Eventually will get this from the server.
 // const tweetData = {
 //   "user": {
 //     "name": "Newton",

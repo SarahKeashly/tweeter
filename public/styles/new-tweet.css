@@ -4,6 +4,8 @@
 .new-tweet {
   color: rgb(54, 53, 53);
   font-weight: bolder;
+  padding-left: .5%;
+  padding-right: .5%;
 }
 
 
