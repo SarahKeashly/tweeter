@@ -3,6 +3,7 @@
 
 .article-tweet-container {
   background-color: #f4f1ec; 
+  margin-top: 2em;
   padding-left: .5%;
   padding-right: .5%;
   border: 5px solid grey;
