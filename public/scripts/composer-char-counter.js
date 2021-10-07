@@ -26,11 +26,16 @@ $("#tweet-text").on("input", function(event) {
   //calculate count
   const count = 140 - value.length;
 
-  if (count < 0) {
+  if (count <= 0) {
     secSibSecChildren.addClass('red');
-  }
+  } else if (count > 0) {
+    secSibSecChildren.removeClass('red')
+  };
 
   $(secSibSecChildkey).html(count);
+
+
+
 
 
 
