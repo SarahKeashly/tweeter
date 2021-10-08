@@ -6,14 +6,28 @@
 $(document).ready(function() {
   console.log("I am here!")
 
-
+  // The user should be given an error that their tweet content is too long or that it is not present (ideally separate messages for each scenario)
+  // The form should not be cleared
+  // The form should not submit
+  // if (document.getElementsByClassName("counter").length <= 0) {
+  //   alert("empty")
+  // }
 
 
   /////////////Post request/////////////
   //on submit - prevents event from going to another page
   $("form").on("submit", function(event) {
+    const tweettextBox = $("#tweet-text").val();
+
+    if (tweettextBox == "") {
+      alert("Add a Tweet!");
+      return false;
+    } else if (tweettextBox.length > 140) {
+      alert("Tweet too long");
+      return false;
+    }
+
     event.preventDefault();
-    console.log("Serialize", $(this).serialize());
 
     //sends form data to the server
     let url = "/tweets";
@@ -31,9 +45,10 @@ $(document).ready(function() {
           dataType: "json",
           url: url,
           type: "GET",
-          // success: success
 
-        })
+
+        }) //added in renderTweets function to fix jquery error 
+          //did length -1 to get the last item in array of object to show up
           .then((resultTweets) => {
             console.log("result", resultTweets)
             renderTweets([resultTweets[resultTweets.length - 1]]);
@@ -57,20 +72,17 @@ $(document).ready(function() {
   /// kick off ajax in background, hit the url and make request to server.  once we get data back, we are going to pass to our 
   const loadtweets = function() {
 
-    // const $button = $('tweet-text');
-    // $button.on('submit', function() {
-    //   console.log('Button clicked, performing ajax call...')
 
     //make a request to "/tweets" and receive the array of tweets as JSON
     let url = "/tweets";
-    // success = renderTweets();
+
 
 
     $.ajax({
       dataType: "json",
       url: url,
       type: "GET",
-      // success: success
+
 
     })
       .then((resultTweets) => {
@@ -158,31 +170,5 @@ $(document).ready(function() {
   timeago.register('pt_BR', locale);
 
 
-  // then you can use it
-  // timeago.format(1473245023718, 'pt_BR');
-
-
-  //   {
-  //     "user": {
-  //       "name": "Newton",
-  //       "avatars": "https://i.imgur.com/73hZDYK.png"
-  //       ,
-  //       "handle": "@SirIsaac"
-  //     },
-  //     "content": {
-  //       "text": "If I have seen further it is by standing on the shoulders of giants"
-  //     },
-  //     "created_at": 1461116232227
-  //   },
-
-
-
-
-  // const $tweet = createTweetElement();
-  // const $tweet = renderTweets(data);
-  // const $tweet = loadtweets(dat);
-  // Test / driver code (temporary)
-  // console.log("tweet", $tweet); // to see what it looks like
-  // $('#article-tweets-container').append($tweet); // to add it to the page so we can make sure it's got all the right elements, classes, etc.
 
 });

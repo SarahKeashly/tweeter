@@ -30,7 +30,7 @@ $("#tweet-text").on("input", function(event) {
     secSibSecChildren.addClass('red');
   } else if (count > 0) {
     secSibSecChildren.removeClass('red')
-  };
+  }
 
   $(secSibSecChildkey).html(count);
 
