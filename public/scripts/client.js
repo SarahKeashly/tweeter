@@ -27,8 +27,22 @@ $(document).ready(function() {
 
     })
       .then((result) => {
-        console.log(`result: ${result}`)
-        renderTweets(result.data);
+        $.ajax({
+          dataType: "json",
+          url: url,
+          type: "GET",
+          // success: success
+
+        })
+          .then((resultTweets) => {
+            console.log("result", resultTweets)
+            renderTweets([resultTweets[resultTweets.length - 1]]);
+
+          })
+          .catch((error) => {
+            console.log(`error: ${(error)}`)
+          });
+
       })
       .catch((error) => {
         console.log(`error: ${JSON.stringify(error)}`)
@@ -115,7 +129,7 @@ $(document).ready(function() {
       const $tweetData = createTweetElement(tweet);
 
       // takes return value and appends it to the tweets container
-      $('#article-tweets-container').append($tweetData);
+      $('#article-tweets-container').prepend($tweetData);
     }
   }
 
