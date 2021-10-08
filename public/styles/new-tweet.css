@@ -39,3 +39,10 @@ button {
   color: red;
 }
 
+#new-tweet-error-placement{
+  color: black;
+  border-bottom: 2px solid red;
+  border-top: 2px solid red;
+  border-right: 2px solid red;
+  border-left: 2px solid red;
+}

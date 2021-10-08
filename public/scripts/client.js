@@ -6,28 +6,26 @@
 $(document).ready(function() {
   console.log("I am here!")
 
-  // The user should be given an error that their tweet content is too long or that it is not present (ideally separate messages for each scenario)
-  // The form should not be cleared
-  // The form should not submit
-  // if (document.getElementsByClassName("counter").length <= 0) {
-  //   alert("empty")
-  // }
-
+  $("#new-tweet-error-placement").hide();
 
   /////////////Post request/////////////
   //on submit - prevents event from going to another page
   $("form").on("submit", function(event) {
     const tweettextBox = $("#tweet-text").val();
+    event.preventDefault();
+
 
     if (tweettextBox == "") {
-      alert("Add a Tweet!");
-      return false;
-    } else if (tweettextBox.length > 140) {
-      alert("Tweet too long");
-      return false;
+
+      $("#new-tweet-error-placement").slideDown().text("Please enter tweet");
+      return;
+
+    } if (tweettextBox.length > 140) {
+      $("#new-tweet-error-placement").slideDown().text("Please lower your text amount");
+      return;
     }
 
-    event.preventDefault();
+
 
     //sends form data to the server
     let url = "/tweets";
@@ -38,8 +36,8 @@ $(document).ready(function() {
       url: url,
       type: "POST",
       data: serializeData
-
     })
+
       .then((result) => {
         $.ajax({
           dataType: "json",
@@ -47,21 +45,29 @@ $(document).ready(function() {
           type: "GET",
 
 
-        }) //added in renderTweets function to fix jquery error 
-          //did length -1 to get the last item in array of object to show up
-          .then((resultTweets) => {
-            console.log("result", resultTweets)
-            renderTweets([resultTweets[resultTweets.length - 1]]);
+        })
+          //   //added in renderTweets function to fix jquery error
+          //     //did length -1 to get the last item in array of object to show up
+          //     .then((resultTweets) => {
+          //       // console.log("result", resultTweets)
+          //       renderTweets([resultTweets[resultTweets.length - 1]]);
 
-          })
+          // })
+
           .catch((error) => {
             console.log(`error: ${(error)}`)
           });
+        //resets text in form
+        $("#tweet-text").val("");
+        //resets counter
+        $("#submit-tweet").find(".counter").val(140);
+        loadtweets();
 
       })
-      .catch((error) => {
-        console.log(`error: ${JSON.stringify(error)}`)
-      });
+
+
+
+
   });
 
 
@@ -102,24 +108,30 @@ $(document).ready(function() {
 
   const createTweetElement = function(tweet) {
 
+    const escape = function(str) {
+      let div = document.createElement("div");
+      div.appendChild(document.createTextNode(str));
+      return div.innerHTML;
+    };
+
 
     const $articleDom = $(`<article class="article-tweet-container">
     <header class="article-tweet-header">
       <div class="article-name">
-      <p> <img class="newton-avatar" src=" ${tweet["user"]["avatars"]}"/>
-      ${tweet["user"]["name"]}
+      <p> <img class="newton-avatar" src=" ${escape(tweet["user"]["avatars"])}"/>
+      ${escape(tweet["user"]["name"])}
         </p>
       </div>
       <div class="article-username">
-        <p>${tweet["user"]["handle"]}</p>
+        <p>${escape(tweet["user"]["handle"])}</p>
       </div>
     </header>
     <div class="article-tweet-body">
-      <p>${tweet["content"]["text"]}</p>
+      <p>${escape(tweet["content"]["text"])}</p>
     </div>
     <hr>
     <footer class="article-tweet-footer">
-      <p>${timeago.format(tweet["created_at"])}</p>
+      <p>${timeago.format(escape(tweet["created_at"]))}</p>
       <div class="article-small-images">
         <div class="flag"><i class="fas fa-flag"></i></div>
         <div class="retweet"><i class="fas fa-retweet"></i></div>
