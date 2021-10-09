@@ -3,13 +3,20 @@
  * jQuery is already loaded
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
+
 $(document).ready(function() {
-  console.log("I am here!")
 
   $("#new-tweet-error-placement").hide();
 
+
   /////////////Post request/////////////
-  //on submit - prevents event from going to another page
+
+  //sets up event request on submit button, sets up error catch 
+  //sends form data to the server
+  //ajax request that posts data to "/tweets"
+  //resets text in form
+  //resets counter
+
   $("form").on("submit", function(event) {
     const tweettextBox = $("#tweet-text").val();
     event.preventDefault();
@@ -25,13 +32,10 @@ $(document).ready(function() {
       return;
     }
 
-
-
-    //sends form data to the server
     let url = "/tweets";
     let serializeData = $(this).serialize();
 
-    //ajax request that posts data to "/tweets"
+
     $.ajax({
       url: url,
       type: "POST",
@@ -46,49 +50,33 @@ $(document).ready(function() {
 
 
         })
-          //   //added in renderTweets function to fix jquery error
-          //     //did length -1 to get the last item in array of object to show up
-          //     .then((resultTweets) => {
-          //       // console.log("result", resultTweets)
-          //       renderTweets([resultTweets[resultTweets.length - 1]]);
-
-          // })
 
           .catch((error) => {
             console.log(`error: ${(error)}`)
           });
-        //resets text in form
+
+
         $("#tweet-text").val("");
-        //resets counter
+
         $("#submit-tweet").find(".counter").val(140);
         loadtweets();
 
       })
 
-
-
-
   });
-
-
 
 
   ////////////// Get request///////////////////
 
-  /// kick off ajax in background, hit the url and make request to server.  once we get data back, we are going to pass to our 
+  //makes a get requestes with ajax and sends a callback to renderTweets function so that it loops through the tweet information in json package 
   const loadtweets = function() {
 
-
-    //make a request to "/tweets" and receive the array of tweets as JSON
     let url = "/tweets";
-
-
 
     $.ajax({
       dataType: "json",
       url: url,
       type: "GET",
-
 
     })
       .then((resultTweets) => {
@@ -100,11 +88,12 @@ $(document).ready(function() {
         console.log(`error: ${(error)}`)
       });
 
-    // });
 
   };
   loadtweets();
 
+
+  //takes in a tweet and returns articleDOM variable with tweet information, user, and date of tweet
 
   const createTweetElement = function(tweet) {
 
@@ -145,18 +134,19 @@ $(document).ready(function() {
   };
 
 
-  //loop through tweet, and for each tweet, I am going to run create tweet element
+  //loops through tweet, and for each tweet, takes return value and appends it to the tweets container
+
   const renderTweets = function(tweets) {
-    // loops through tweets
 
     for (const tweet of tweets) {
       const $tweetData = createTweetElement(tweet);
 
-      // takes return value and appends it to the tweets container
       $('#article-tweets-container').prepend($tweetData);
     }
   }
 
+
+  //takes in time as a number for when tweet was created and returns when it was submitted
 
   let locale = function(number, index, totalSec) {
     // number: the time ago / time in number;
@@ -180,7 +170,5 @@ $(document).ready(function() {
     ][index];
   };
   timeago.register('pt_BR', locale);
-
-
 
 });
