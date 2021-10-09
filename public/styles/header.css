@@ -1,5 +1,5 @@
 
-header {
+.main-header {
   margin-top: 100px;
   display: flex;
   background-color: #e69027;
@@ -7,12 +7,80 @@ header {
   height: 400px;
   justify-content: center;
   align-items: center;
+  width: 100%;
 
 }
 
 .avatar-image {
-
+  width: 100%;
   justify-content: center;
   align-items: center;
+
+}
+
+.header-user {
+  font-size: 1.5em;
+  position: relative;
+  top: -40px;
+  left: 40px;
+}
+
+
+@media only screen and (max-width: 767px) {
+  .main-header{
+    margin-top: 0px;
+    background-color: #e69027;
+    background-image: url("https://www.transparenttextures.com/patterns/asfalt-dark.png");
+
+    /* overflow: hidden;
+    position: fixed; Set the header to fixed position */
+    /* top: 0; /* Position the navbar at the top of the page */
+    /* width: 100%; /* Full width */
+    /* z-index: 1; */ 
+  }
+
+  .avatar-image {
+    margin-top: 3em;
+  }
+
+  .header-user {
+    font-size: 1.5em;
+      top: 0px;
+      left: 0px; 
+    
+  }
+}
+
+
+@media only screen and (min-width: 768px) {
+  /* Write Tablet only CSS here */
+  .main-header {
+    
+    display: flex;
+    flex-direction: row;
+    align-content: flex-start;
+    /* margin-top: 150px; */
+    width: 20rem;
+    height: 20rem;
+    margin-left: 1em;
+
+
+    
+  }
+
+  .avatar-image {
+    display:flex;
+    align-content:center;
+    margin-top: 80px;  
+    /* width: 100%; */
+  
+  }
+
+  .header-user {
+    font-size: 1em;
+    
+  }
+
+  
 
 }

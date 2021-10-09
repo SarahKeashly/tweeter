@@ -3,7 +3,7 @@
 
 .article-tweet-container {
   background-color: #f4f1ec; 
-  margin-top: 2em;
+  margin-top: .5em;
   padding-left: .5%;
   padding-right: .5%;
   border: 5px solid grey;
@@ -28,7 +28,8 @@
 }
 
 .newton-avatar {
-  width:40px;  
+  width:1.5em;  
+  
 }
 
 .article-username{

@@ -17,11 +17,11 @@ $(document).ready(function() {
 
     if (tweettextBox == "") {
 
-      $("#new-tweet-error-placement").slideDown().text("Please enter tweet");
+      $("#new-tweet-error-placement").slideDown().text("Please enter a tweet");
       return;
 
     } if (tweettextBox.length > 140) {
-      $("#new-tweet-error-placement").slideDown().text("Please lower your text amount");
+      $("#new-tweet-error-placement").slideDown().text("Please adjust your tweet length to less than 140 characters.");
       return;
     }
 

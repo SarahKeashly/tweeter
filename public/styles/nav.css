@@ -18,6 +18,7 @@ nav {
   position: fixed; /* Set the navbar to fixed position */
   top: 0; /* Position the navbar at the top of the page */
   width: 100%; /* Full width */
+  z-index: 1;
 }
 
 
@@ -40,6 +41,20 @@ color:#FFFFFF;
 .arrow {
   color: red;
   
+}
+
+
+/* can't seem to get the nav to go with the page after it was set to sticky */
+@media only screen and (max-width: 767px) {
+  nav {
+    background-color: unset;
+    overflow: unset;
+    top:unset;
+    z-index: unset;
+    position: absolute;
+
+  }
+
 }
 
 

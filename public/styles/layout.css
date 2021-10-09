@@ -31,8 +31,23 @@ main {
   height: 100px;
 }
 
+  /* Tablet: minimum width of 768px to maximum width of 1024px */
+  @media only screen and (min-width: 768px) {
+    /* Write Tablet only CSS here */
+
+    body {
+      display:flex;
+      flex-direction: row;
+      margin-top: 7rem;
+      /* align-content: flex-end; */
+      width: 100%;
+      justify-content: center;
+      
+
+    }
 
 
-/*
- * Additional CSS can be defined below or in other CSS files, as per instructions
- */
+
+
+    
+  }
